@@ -12,8 +12,6 @@ class Inmate : public Human {
         void setName(std::string _n) override;
         void setViolation(Human::Violation _v) override;
 
-        friend auto operator<<(std::ostream& os, Human::Violation v) -> std::ostream&;
-
     private:
         std::string name;
         //int id;

@@ -8,5 +8,5 @@ class DC {
         void add(std::unique_ptr<Human>&& h);
         void display();
         void remv();
-        friend auto operator<<(std::ostream& os, Human::Violation v) -> std::ostream&;
+        
 };
