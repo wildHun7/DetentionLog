@@ -17,5 +17,5 @@ class Inmate : public Human {
     private:
         std::string name;
         //int id;
-        Human::Violation violation = Human::Violation::empty; 
+        Human::Violation violation = Human::Violation::empty;  
 };
