@@ -76,7 +76,7 @@ auto addInmate(DC& dc) -> void
 
 auto remvInmate(DC& dc) -> void
 {
-    std::cout << "Type name to remove the record:\n";  
+    std::cout << "Type ID to remove a record:\n";  
     dc.remv();
 }
 

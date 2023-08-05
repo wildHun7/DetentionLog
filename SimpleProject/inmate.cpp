@@ -10,27 +10,27 @@
         //intentionally empty
     }
 
-    int Inmate::getID() const
+    auto Inmate::getID() const -> int
     {
         return this->id;
     }
 
-    std::string Inmate::getName() const  
+    auto Inmate::getName() const -> std::string
     { 
         return this->name; 
     }
 
-    Human::Violation Inmate::getViolation() const
+    auto Inmate::getViolation() const -> Human::Violation
     {
         return this->violation;
     }
 
-    void Inmate::setName(std::string _n)
+    auto Inmate::setName(std::string _n) -> void
     {
         this->name = _n;
     }
 
-    void Inmate::setViolation(Human::Violation _v)
+    auto Inmate::setViolation(Human::Violation _v) -> void
     {
         this->violation = _v;
     }
