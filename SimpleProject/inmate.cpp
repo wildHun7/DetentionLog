@@ -5,9 +5,14 @@
         //intentionally empty
     }
 
-    Inmate::Inmate(std::string _name, Human::Violation _violation): name(_name), violation(_violation)
+    Inmate::Inmate(int _id, std::string _name, Human::Violation _violation): id(std::move(_id)), name(std::move(_name)), violation(std::move(_violation))
     {
         //intentionally empty
+    }
+
+    int Inmate::getID() const
+    {
+        return this->id;
     }
 
     std::string Inmate::getName() const  

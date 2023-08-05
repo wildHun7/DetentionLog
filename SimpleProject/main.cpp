@@ -6,7 +6,7 @@
 #include <conio.h>
 #include <optional>
 
-void displayMenu()
+auto displayMenu() -> void
 {
     std::cout << "===================================== \n";
     std::cout << " Detention Center Log \n";
@@ -29,7 +29,7 @@ auto string_to_vlt(std::string const s) -> std::optional<Human::Violation>
     return std::nullopt;
 }
 
-auto operator>>(std::istream& is, Human::Violation v) -> std::istream&
+auto operator>>(std::istream& is, Human::Violation& v) -> std::istream&
 {
     auto s = std::string();
     if (!(is >> s)) {
@@ -58,6 +58,10 @@ auto operator<<(std::ostream& os, Human::Violation v) -> std::ostream& {
 
 auto addInmate(DC& dc) -> void 
 {
+    std::cout << "Type ID and press Enter:\n";
+    int inmateID = 0;
+    std::cin >> inmateID;
+
     std::cout << "Type name and press Enter:\n";
     std::string n;
     std::cin >> n; 
@@ -66,13 +70,13 @@ auto addInmate(DC& dc) -> void
     Human::Violation vlt = Human::Violation::empty;
     std::cin >> vlt;
     
-    std::unique_ptr<Human> h = std::make_unique<Inmate>(std::move(n), std::move(vlt));
-    dc.add(std::move(h));
+    std::unique_ptr<Human> h = std::make_unique<Inmate>(inmateID, std::move(n), std::move(vlt));
+    dc.add(std::move(h)); 
 }
 
 auto remvInmate(DC& dc) -> void
 {
-    std::cout << "Type name to remove the record:\n";  //id would be better
+    std::cout << "Type name to remove the record:\n";  
     dc.remv();
 }
 
@@ -88,7 +92,8 @@ auto main() -> int
         system("cls");
         displayMenu();
         std::cin >> choice;
-        std::cout << std::endl;
+        if (choice >= 5)
+            continue;
         system("cls");
 
         switch (choice)
