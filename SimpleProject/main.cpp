@@ -63,14 +63,14 @@ auto addInmate(DC& dc) -> void
     std::cin >> inmateID;
 
     std::cout << "Type name and press Enter:\n";
-    std::string n;
-    std::cin >> n; 
+    std::string inmate_name;
+    std::cin >> inmate_name; 
     
     std::cout << "Type violation and press Enter:\n";
-    Human::Violation vlt = Human::Violation::empty;
-    std::cin >> vlt;
+    Human::Violation inmate_vlt = Human::Violation::empty;
+    std::cin >> inmate_vlt;
     
-    std::unique_ptr<Human> h = std::make_unique<Inmate>(inmateID, std::move(n), std::move(vlt));
+    std::unique_ptr<Human> h = std::make_unique<Inmate>(inmateID, std::move(inmate_name), std::move(inmate_vlt));
     dc.add(std::move(h)); 
 }
 

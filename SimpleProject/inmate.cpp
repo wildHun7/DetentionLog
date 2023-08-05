@@ -5,7 +5,7 @@
         //intentionally empty
     }
 
-    Inmate::Inmate(int _id, std::string _name, Human::Violation _violation): id(std::move(_id)), name(std::move(_name)), violation(std::move(_violation))
+    Inmate::Inmate(int _id, std::string _name, Human::Violation _violation): id(_id), name(std::move(_name)), violation(std::move(_violation))
     {
         //intentionally empty
     }
