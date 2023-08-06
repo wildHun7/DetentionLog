@@ -1,11 +1,11 @@
 #include "dc.h"
 
-void DC::add(std::unique_ptr<Human>&& h) 
+auto DC::add(std::unique_ptr<Human>&& h) -> void
 { 
     this->humans.push_back(move(h)); 
 }
 
-void DC::display() 
+auto DC::display() -> void
 {   
     for (auto& i : humans)
     {
@@ -14,17 +14,32 @@ void DC::display()
     system("pause");
 }
 
-void DC::remv()
+auto DC::remv() -> void
 {
-    int i;
-    std::cin >> i;
-    auto it = find_if(humans.begin(), humans.end(), [&i](const std::unique_ptr<Human>& h)
+    int id_to_remove;
+    std::cin >> id_to_remove;
+    auto it = find_if(humans.begin(), humans.end(), [&id_to_remove](const std::unique_ptr<Human>& h)
         {
-            return h != nullptr && h->getID() == i;
+            return h != nullptr && h->getID() == id_to_remove;
         });
     if (it != humans.end())
         humans.erase(it);
     else
         std::cout << "Empty!";
     system("pause");
+}
+
+auto DC::update() -> void
+{
+    std::cout << "Type ID and press Enter:\n";
+    int id_to_update;
+    std::cin >> id_to_update;
+    auto it = find_if(humans.begin(), humans.end(), [&id_to_update](const std::unique_ptr<Human>& h)
+        {
+            return h != nullptr && h->getID() == id_to_update;
+        });
+    std::cout << "Type violation and press Enter:\n";
+    Human::Violation inmate_vlt = Human::Violation::empty;
+    std::cin >> inmate_vlt;
+    humans[std::distance(humans.begin(), it)]->setViolation(inmate_vlt);
 }

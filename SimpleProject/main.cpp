@@ -14,7 +14,7 @@ auto displayMenu() -> void
     std::cout << " 1.Add inmate records\n";
     std::cout << " 2.Delete inmate records\n";
     std::cout << " 3.View all inmate records \n";
-    //std::cout << " 4.Update inmate records \n";
+    std::cout << " 4.Update inmate records \n";
     //std::cout << " 5.Find inmate by ID \n";
 }
 
@@ -53,7 +53,7 @@ auto vlt_to_string(Human::Violation const v) -> std::optional<std::string_view>
 }
 
 auto operator<<(std::ostream& os, Human::Violation v) -> std::ostream& {
-    return os << vlt_to_string(v).value_or("N/A");
+    return os << vlt_to_string(v).value_or("not defined");
 }
 
 auto addInmate(DC& dc) -> void 
@@ -84,6 +84,10 @@ auto displayInmates(DC& dc) -> void {
     dc.display();
 }
 
+auto updateInmate(DC& dc) -> void {
+    dc.update();
+}
+
 auto main() -> int
 {
     DC dc;
@@ -106,6 +110,9 @@ auto main() -> int
             break;
         case 3:
             displayInmates(dc);
+            break;
+        case 4:
+            updateInmate(dc);
             break;
         default:
             std::cout << "Wrong choice. Try Again." << std::endl;

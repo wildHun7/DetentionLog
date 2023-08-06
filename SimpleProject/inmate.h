@@ -2,7 +2,6 @@
 #include "human.h"
 
 class Inmate : public Human {
-
     public:
         Inmate();
         Inmate(int _id, std::string _name, Human::Violation _violation);
@@ -12,10 +11,10 @@ class Inmate : public Human {
         auto getViolation() const -> Human::Violation override;
         
         auto setName(std::string _n) -> void override;
-        auto setViolation(Human::Violation _v) -> void override;
+        auto setViolation(Human::Violation& _v) -> void override;
 
     private:
-        int id;
+        int id = 0;
         std::string name;
         Human::Violation violation = Human::Violation::empty;  
 };

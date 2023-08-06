@@ -5,8 +5,8 @@
 class DC {
     public:
         std::vector< std::unique_ptr<Human> > humans;
-        void add(std::unique_ptr<Human>&& h);
-        void display();
-        void remv();
-        
+        auto add(std::unique_ptr<Human>&& h) -> void;
+        auto display() -> void;
+        auto remv() -> void;
+        auto update() -> void;
 };

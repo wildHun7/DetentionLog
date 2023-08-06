@@ -29,12 +29,13 @@ class Human {
         };
 
         friend auto operator<<(std::ostream&, Human::Violation) -> std::ostream&;
+        friend auto operator>>(std::istream&, Human::Violation&) -> std::istream&;
 
         virtual auto getID() const -> int = 0;
         virtual auto getName() const -> std::string = 0;
         virtual auto getViolation() const ->Human::Violation = 0;
         
         virtual auto setName(std::string) -> void = 0;
-        virtual auto setViolation(Human::Violation) -> void = 0;
+        virtual auto setViolation(Human::Violation&) -> void = 0;
 };
 

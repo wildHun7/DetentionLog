@@ -30,7 +30,7 @@
         this->name = _n;
     }
 
-    auto Inmate::setViolation(Human::Violation _v) -> void
+    auto Inmate::setViolation(Human::Violation& _v) -> void
     {
         this->violation = _v;
     }
