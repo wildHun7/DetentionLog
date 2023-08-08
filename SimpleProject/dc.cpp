@@ -7,7 +7,7 @@ auto DC::add(std::unique_ptr<Human>&& h) -> void
 
 auto DC::display() -> void
 {   
-    for (auto& i : humans)
+    for (const auto& i : humans)
     {
         std::cout << "ID: " << i->getID() <<  "| Name: " << i->getName() << " | Violation: " << i->getViolation() << std::endl;
     }
